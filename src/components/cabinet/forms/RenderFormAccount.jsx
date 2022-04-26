@@ -3,8 +3,6 @@ import React from 'react';
 
 import { reduxForm } from 'redux-form';
 
-import { connect } from 'react-redux';
-
 import { updateReduxForm } from 'actions';
 
 import RenderTitle from './fields/RenderTitle';
@@ -27,10 +25,9 @@ import RenderFieldsCouple from './fields/RenderFieldsCouple'; // поле сел
 
 import RenderInputAddition from './fields/RenderInputAddition'; // поле с добавлением полей 
 
-import RenderInputFile from './fields/RenderInputFile'; // поле с добавлением поля, не уневерсальное! 
-import RenderInputFileNew from './fields/RenderInputFileNew'; // поле с добавлением поля, не уневерсальное! 
+import RenderInputFileNew from './fields/RenderInputFileNew'; // поле с добавлением поля! 
 
-import RenderInputSelectCustom from './fields/RenderInputSelectCustom'; // поле с селект
+import RenderInputSelectTrue from './fields/RenderInputSelectTrue'; // поле с селект
 
 
 
@@ -40,7 +37,7 @@ import RenderInputSelectCustom from './fields/RenderInputSelectCustom'; // по�
 
 const TemplateForm = (props) => {
   //console.log(props)
-  const { handleSubmit, objFields, orderFields, btnSaveText, onSubmitProps, initialValues, updateReduxForm } = props;
+  const { handleSubmit, objFields, orderFields, btnSaveText, onSubmitProps, } = props;
 
 
 
@@ -67,17 +64,6 @@ const TemplateForm = (props) => {
               typeField={obj.typeField}
             />
           );
-        case 'text':
-          return (
-            <RenderInputText
-              name={obj.phone}
-              placeholder={obj.placeholder}
-              label={obj.label}
-              labelSecond={obj.labelSecond}
-              disabled={obj.disabled}
-              typeField={obj.typeField}
-            />
-          );
         case 'textarea':
           return RenderInputTextarea(obj.name, obj.placeholder, obj.label, obj.labelSecond, obj.disabled, obj.maxLength);
         case 'checkbox':
@@ -87,10 +73,17 @@ const TemplateForm = (props) => {
         case 'password':
           return RenderInputPassword(obj.name, obj.placeholder, obj.label);
         case 'switch':
-          return RenderInputSwitch(obj.name, obj.label);
+          return (
+            <RenderInputSwitch
+              name={obj.name}
+              label={obj.label}
+              options={obj.options}
+
+            />
+          );
         case 'additional':
           return RenderInputAddition(obj.name, obj.label, obj.btnTextAdd, obj.typeInner);
-        case 'coupleInput':
+        case 'multy':
           return (
             <RenderFieldsCouple
               mainname={obj.mainname}
@@ -100,7 +93,15 @@ const TemplateForm = (props) => {
             />
           );
         case 'select':
-          return RenderInputSelectCustom(obj.name, obj.label, obj.labelSecond, obj.options, initialValues, updateReduxForm);
+          return (
+            <RenderInputSelectTrue
+              name={obj.name}
+              label={obj.label}
+              labelSecond={obj.labelSecond}
+              placeholder={obj.placeholder}
+              options={obj.options}
+            />
+          );
         case 'file':
           return (
             <RenderInputFileNew
@@ -114,10 +115,7 @@ const TemplateForm = (props) => {
               textEmpty={obj.textEmpty}
             />
           );
-        case 'fileInput':
-          return RenderInputFile(obj.name, obj.label, obj.labelSecond, obj.typeUpload, obj.maxSize, initialValues, updateReduxForm, obj.typeFile, obj.textEmpty);
-        // default:
-        //   breack;
+        default:
       }
     }
 
@@ -148,20 +146,9 @@ const TemplateForm = (props) => {
   )
 }
 
-const mapStateToProps = (props) => {
-
-  const dataValue = props.form.singleInput && props.form.singleInput.values;
-
-  return {
-    initialValues: dataValue
-  }
-}
-
-
-
 export default reduxForm({
   form: 'singleInput',
   enableReinitialize: true
-})(connect(mapStateToProps, { updateReduxForm })(TemplateForm));
+})(TemplateForm);
 
 

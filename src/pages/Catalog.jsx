@@ -17,7 +17,7 @@ const Catalog = () => {
         </div> */}
         <div className="col-6">
           <h2>
-            <Link to="/catalog/employers">Вакансии</Link>
+            <Link to="/catalog/vacancies">Вакансии</Link>
           </h2>
         </div>
       </div>

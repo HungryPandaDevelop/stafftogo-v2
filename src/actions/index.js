@@ -23,7 +23,6 @@ import {
 
 import { toast } from 'react-toastify';
 
-import storeImage from 'hooks/storeImage';
 
 
 
@@ -49,12 +48,16 @@ export const registrationAccount = (formData) =>
   
       /* add to firestore base */
       const user = userCredential.user;
+
       const formDataCopy = { ...formData };
+
       delete formDataCopy.password;
+
       formDataCopy.timestamp = serverTimestamp();
+
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
       /* add to firestore base */
-      window.location = '/cabinet/';
+      //window.location = '/cabinet/';
       //
       toast.success('Rегистрация успешна');
     
@@ -275,7 +278,6 @@ export const fetchItem = (formValues) => {
 
 
 export const updateReduxForm = (data) => {
-  console.log('updateReduxForm', data)
   return(
     { type: 'UPDATE_FORM', data }
   );

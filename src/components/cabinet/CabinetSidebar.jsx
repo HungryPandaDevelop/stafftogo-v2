@@ -21,12 +21,10 @@ const CabinetSidebar = () => {
 
   const NameMass = [
     ['Мои реквизиты', 'account', ''],
+    ['Мои вакансии', 'vacancies', 'vacancies'],
     // ['Мои реквизиты', 'requisites', 'requisites'],
     // ['Мои отклики', 'respond', 'responses'],
     // ['Мои кандидаты', 'candidates', 'candidates'],
-    ['Мои вакансии', 'vacancies', 'vacancies'],
-    ['вакансии +', 'vacancies', 'vacancies-new'],
-    ['вакансии edit', 'vacancies', 'vacancies-edit'],
     // ['Мой пакет услуг', 'packserv', 'packserv'],
     // ['Мои счета', 'score', 'score'],
     // ['История заказов', 'historyorder', 'order_history'],

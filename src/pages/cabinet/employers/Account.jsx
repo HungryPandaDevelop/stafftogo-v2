@@ -10,6 +10,7 @@ import {
   saveInfoAccountAction
 } from 'actions'
 
+import fetchAccount from './getInfoAccountAction';
 
 const Account = (props) => {
 

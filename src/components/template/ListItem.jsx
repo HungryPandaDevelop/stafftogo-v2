@@ -22,16 +22,19 @@ const ListItem = (props) => {
         <div className="col-12 resume-header-roof">
           <div className="resume-update"><span>Резюме обновлено: 26.01.2022</span></div>
         </div>
-        <div className="col-2">
-          <div className="resume-face-container">
-            <div
-              className="resume-face img-cover"
-              style={{ backgroundImage: `url(${imgCompany[0]})` }}
-            >
-              <img src={imgCompany[0]} alt="" />
+        {imgCompany && (
+          <div className="col-2">
+            <div className="resume-face-container">
+              <div
+                className="resume-face img-cover"
+                style={{ backgroundImage: `url(${imgCompany})` }}
+              >
+                <img src={imgCompany} alt="" />
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
         <div className="col-5">
           <div className="resume-info">
             <h2>
@@ -40,7 +43,7 @@ const ListItem = (props) => {
               </Link>
             </h2>
             <div className="vacancies-price">
-              {`Р ${listing.salary_priceFrom}`}
+              {listing.salary_priceFrom && `Р ${listing.salary_priceFrom}`}
               {listing.salary_priceTo && ` - ${listing.salary_priceTo}`}
 
 

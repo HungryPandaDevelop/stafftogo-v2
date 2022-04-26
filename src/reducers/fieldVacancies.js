@@ -18,60 +18,48 @@ export default function(){
       "settings"
     ],
     vacancies: { 
+      type: "multy", 
       mainname: "vacancies", 
-      type: "coupleInput", 
       allFields: [
         { 
-          name: "name",  
           type:"text", 
+          name: "name",  
           placeholder: "Введите наименование вакансии", 
           label:"Наименование вакансии", 
           length: "col-6"},
         { 
-          name: "type",  
           type:"select", 
+          name: "type",  
           length: "col-6", 
           label:"Выбрать наименование из библиотеки вакансий",
           placeholder: "Поисковая выдача для соискателей больше",
           options: [
-            {name:"ООО", value:"ooo"}, 
-            {name:"ЗАО", value:"zao"}, 
-            {name:"ОАО", value:"oao"}, 
-            {name:"УП", value:"yp"}  , 
-            {name:"ИП", value:"ip"}
+            {name:"Продавец", value:"type1"}, 
+            {name:"Кладовщик", value:"type2"}, 
+            {name:"Мерчендайзер", value:"type3"}, 
+            {name:"Стажер IT", value:"type4"}  , 
+            {name:"Инженер", value:"type5"}
           ]
         },
       ]
     },
     responsibilities: { 
-      name: "responsibilities",  
       type:"textarea", 
+      name: "responsibilities",  
       label: "Основные обязанности",
       placeholder: "Введите не более 500 символов (символы перестанут печататься, когда вы превысите лимит)" 
     },
-    education: {
-      name: "education",
-      type: "select", 
-      label:"Образование", 
-      placeholder:"Выберать образование",
-      options: [
-        {label:"Высшее", value:"type1"}, 
-        {label:"Профессиональное", value:"type2"} ,
-        {label:"Среднее специальное", value:"type3"},
-        {label:"Неважно", value:"type4"}
-      ] 
-    },
     typeSpecialist: { 
-      name: "typeSpecialist", 
       type:"checkbox", 
+      name: "typeSpecialist", 
       options: [
         { label: 'Мне нужен один специалист', value: 'one_spec' },
         { label: 'Мне нужна команда', value: 'multy_spec' }
       ] 
     },
     typeWork: {
-      name: "typeWork", 
       type: "checkbox", 
+      name: "typeWork", 
       label:"Тип работы", 
       options:[
         {label: "Постоянная работа", value:"type_1"},
@@ -83,44 +71,56 @@ export default function(){
       ]
     },
     settings: {
-      name: "settings", 
       type: "checkbox", 
+      name: "settings", 
       options:[
         {label: "Включить автоподбор резюме", value:"type_1"},
         {label: "Разместить вакансию анаонимно (скрыть название компании)", value:"type_2"},
       ]
     },
     salary: { 
+      type: "multy", 
       mainname: "salary", 
-      type: "coupleInput", 
       label:"Зарплата",  
       allFields: [
-        { name: "priceFrom",  type:"text", placeholder: "От", length: "col-4"},
-        { name: "priceTo",  type:"text", placeholder: "До", length: "col-4" },
-        { name: "priceType",  type:"select", length: "col-4",
+        { 
+          type:"text", 
+          name: "priceFrom",  
+          placeholder: "От", 
+          length: "col-4"
+        },
+        {
+          type:"text", 
+          name: "priceTo",  
+          placeholder: "До", 
+          length: "col-4" 
+        },
+        { 
+          type:"select", 
+          name: "priceType",  
+          length: "col-4",
+          placeholder:"Руб./мес.",
           options: [
-            {name:"ООО", value:"ooo"}, 
-            {name:"ЗАО", value:"zao"}, 
-            {name:"ОАО", value:"oao"}, 
-            {name:"УП", value:"yp"}  , 
-            {name:"ИП", value:"ip"}
+            {name:"Руб./Смена", value:"type1"}, 
+            {name:"Руб./Час", value:"type2"}, 
+            {name:"За проект", value:"type3"}, 
           ]
         },
       ],
     },
     courses: { 
+      type: "multy", 
       mainname: "courses", 
-      type: "coupleInput", 
       label:"Оконченные курсы",  
       allFields: [
         { name: "date",  type:"text", placeholder: "мм.гг. - мм.гг.", length: "col-4"},
-        { name: "place",  type:"text", placeholder: "Наименование учебного заведения", length: "col-8" },
+        { name: "place",  type:"text", placeholder: "Наименование учебного заведения", length: "col-8 margin-botton-15" },
         { name: "name",  type:"text", placeholder: "Наименование курса", length: "col-12" },
       ],
     },
     wetake:{
-      name: "wetake", 
       type:"checkbox", 
+      name: "wetake", 
       label:"Рассматриваем на вакансию всех, в том числе",
       options: [
         { label: 'Пенсионеров', value: 'type1' },
@@ -130,31 +130,63 @@ export default function(){
       ] 
     },
     rubric: {
-      name: "rubric",
       type: "select", 
+      name: "rubric",
       label:"Рубрика", 
-      placeholder:"Выбрать  (но не более 5)",
+      placeholder:"Выбрать",
       options: [
-        {label:"Высшее", value:"type1"}, 
-        {label:"Профессиональное", value:"type2"} ,
-        {label:"Среднее специальное", value:"type3"},
-        {label:"Неважно", value:"type4"}
+        {name: "Бар", value:"type_1"},
+        {name: "Вендинг", value:"type_2"},
+        {name: "Винная", value:"type_3"},
+        {name: "Винодельня", value:"type_4"},
+        {name: "Гостиница", value:"type_5"},
+        {name: "Кейтеринг", value:"type_6"},
+        {name: "Кондитерская", value:"type_7"},
+        {name: "Кофейня", value:"type_8"},
+        {name: "Отель", value:"type_9"},
+      ] 
+    },
+    education: {
+      type: "select", 
+      name: "education",
+      label:"Образование", 
+      placeholder:"Выберать образование",
+      options: [
+        {name:"Высшее", value:"type1"}, 
+        {name:"Профессиональное", value:"type2"} ,
+        {name:"Среднее специальное", value:"type3"},
+        {name:"Неважно", value:"type4"}
       ] 
     },
     region: {
-      name: "region",
       type: "select", 
+      name: "region",
       label:"Регион показа", 
+      placeholder:"Москва",
       options: [
-        {label:"Москва", value:"type1"}, 
-        {label:"Профессиональное", value:"type2"} ,
-        {label:"Среднее специальное", value:"type3"},
-        {label:"Неважно", value:"type4"}
+        {name:"Москва", value:"type1"}, 
+        {name:"Профессиональное", value:"type2"} ,
+        {name:"Среднее специальное", value:"type3"},
+        {name:"Неважно", value:"type4"}
       ] 
     },
-    titleOne: {label:"Основная информация", type:"title"},
-    titleTwo: {label:"Обязанности", type:"title"},
-    titleThree: {label:"Требования", type:"title"},
-    titleFour: {label:"Настройка публикации вакансии", type:"title"},
+    titleOne: {
+      type:"title",
+      label:"Основная информация", 
+    },
+    titleTwo: {
+      type:"title",
+      label:"Обязанности", 
+
+    },
+    titleThree: {
+      type:"title",
+      label:"Требования",
+      
+    },
+    titleFour: {
+      type:"title",
+      label:"Настройка публикации вакансии", 
+    },
   }
 }

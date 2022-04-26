@@ -58,6 +58,7 @@ const List = () => {
                     listing={listing.data}
                     id={listing.id}
                     key={listing.id}
+                    imgCompany={listing.imgCompany}
                   />
                 ))}
               </ul>

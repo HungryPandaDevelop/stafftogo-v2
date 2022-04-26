@@ -12,10 +12,8 @@ const TemplateFile = (props) => {
   const {
     input,
     name,
-    placeholder,
     label,
     labelSecond,
-    options,
     maxSize,
     typeFile,
     textEmpty
@@ -23,9 +21,6 @@ const TemplateFile = (props) => {
 
   const [nameFile, setNameFile] = useState('');
   const [firstLoad, setFirstLoad] = useState(0);
-
-  console.log(input.value, nameFile);
-
 
   useEffect(() => {
 

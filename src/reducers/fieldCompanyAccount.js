@@ -4,7 +4,6 @@ export default function(){
       "typeCabinet",
       "titleOne",
       "name","email",
-      "education",
       "typeEmployer",
       "name_company",
       "site_company",
@@ -27,6 +26,15 @@ export default function(){
       "closeDoc",
       "videoCompany"
     ],
+    typeCabinet: {
+      type:"switch",
+      name: "typeCabinet", 
+      label: "Тип кабинета", 
+      options: [
+        {name:"Соискатель",value:"applicants"},
+        {name:"Компания", value:"employers"},
+      ],
+    },
     name: { 
       type:"text" ,
       name: "name", 
@@ -49,27 +57,11 @@ export default function(){
       placeholder: "Почта", 
       disabled: 0
     },
-    education: {
-      name: "education", 
-      label:"Образование", 
-      type: "select", 
-      options: [
-        {label:"ООО", value:"ooo"}, 
-        {label:"ЗАО", value:"zao"} , 
-        {label:"ИП", value:"ip"}] 
-      },
     site_company: { 
       type:"text",  
       name: "site_company", 
       label: "Сайт компании", 
       placeholder: "Доменное имя вашего сайта ", 
-    },
-    description_company: { 
-      type:"textarea", 
-      name: "description_company", 
-      label: "Краткое описание компании", 
-      placeholder: "Введите не более 500 символов (символы перестанут печататься, когда вы превысите лимит)", 
-      maxLength: 500
     },
     num_workers: { 
       type:"text", 
@@ -78,14 +70,6 @@ export default function(){
       labelSecond:"(Указывается число сотрудников в цифровом эквиваленте)", 
       placeholder: "Введите цифру от 1", 
       typeField: "number"
-    },
-    how_get: { 
-      type:"textarea", 
-      name: "how_get", 
-      label: "Как добраться до офиса", 
-      placeholder: "Введите не более 500 символов (символы перестанут печататься, когда вы превысите лимит)", 
-      
-      maxLength: 500
     },
     kpp: { 
       type:"text",
@@ -124,6 +108,28 @@ export default function(){
       label: "Р/С", 
       placeholder: "Р/С", 
     },
+    legal_address: { 
+      type:"text", 
+      name: "legal_address", 
+      label: "Юридический адрес", 
+      placeholder: "Юридический адрес", 
+    },
+    description_company: { 
+      type:"textarea", 
+      name: "description_company", 
+      label: "Краткое описание компании", 
+      placeholder: "Введите не более 500 символов (символы перестанут печататься, когда вы превысите лимит)", 
+      maxLength: 500
+    },
+    how_get: { 
+      type:"textarea", 
+      name: "how_get", 
+      label: "Как добраться до офиса", 
+      placeholder: "Введите не более 500 символов (символы перестанут печататься, когда вы превысите лимит)", 
+      
+      maxLength: 500
+    },
+    
     closeDoc: { 
       type:"checkbox", 
       name: "closeDoc",
@@ -143,12 +149,6 @@ export default function(){
         { label: 'Кадровое агентство', value: 'agency' }
       ] }
       ,
-    legal_address: { 
-      type:"text", 
-      name: "legal_address", 
-      label: "Юридический адрес", 
-      placeholder: "Юридический адрес", 
-    },
     titleOne: {
       type:"title",
       label:"Основная информация", 
@@ -157,10 +157,6 @@ export default function(){
     titleTwo: {
       type:"title",
       label:"Реквизиты компании",
-    },
-    typeCabinet: {
-      type:"typeCabinet" ,
-      typeName: "company",  
     },
     typeJob: {
       type: "list", 
@@ -198,36 +194,61 @@ export default function(){
       typeInner: "phone"
     },
     legalNameCompany: {
-      type: "coupleInput", 
+      type: "multy", 
       mainname: "legalNameCompany", 
       label:"Юридическое наименование организации",  
       allFields: [
-        { name: "priceTo",  type:"text", placeholder: "Наименование компании", length: "col-6" },
-        { name: "priceType",  type:"select", length: "col-6", placeholder: "Общество с ограниченной ответственностью",
+        { 
+          type:"select", 
+          name: "type",
+          length: "col-6", 
+          placeholder: "Общество с ограниченной ответственностью",
           options: [
-            {name:"ООО", value:"ooo"}, 
-            {name:"ЗАО", value:"zao"}, 
-            {name:"ОАО", value:"oao"}, 
-            {name:"УП", value:"yp"}  , 
-            {name:"ИП", value:"ip"}
+            {name:"ООО", value:"type1"}, 
+            {name:"ЗАО", value:"type2"}, 
+            {name:"ОАО", value:"type3"}, 
+            {name:"ИП", value:"type4"} ,
+            {name:"УП", value:"type5"}  , 
+            {name:"Общ. орг.", value:"type6"}  , 
+            {name:"Некорм. орг.", value:"type7"}  , 
+            {name:"Гос. уч.", value:"type8"}  , 
+            {name:"АО", value:"type9"}  , 
+            {name:"ПАО", value:"type10"}  , 
+            
           ]
         },
+        { 
+          type:"text", 
+          name: "name", 
+          placeholder: "Наименование компании", 
+          length: "col-6" 
+        },
+
       ],
     },
     centralOffice: { 
-      type: "coupleInput", 
+      type: "multy", 
       mainname: "centralOffice", 
       label:"Центральный офис компании",  
       allFields: [
-        { name: "priceTo",  type:"text", placeholder: "Наименование компании", length: "col-6" },
-        { name: "priceType",  type:"select", length: "col-6", label: "Город", placeholder: "Город",
+        { 
+          type:"select", 
+          name: "city",  
+          length: "col-6", 
+          placeholder: "Город",
           options: [
-            {name:"ООО", value:"ooo"}, 
-            {name:"ЗАО", value:"zao"}, 
-            {name:"ОАО", value:"oao"}, 
-            {name:"УП", value:"yp"}  , 
-            {name:"ИП", value:"ip"}
+            {name:"Москва", value:"type1"}, 
+            {name:"Санкт-Петербург", value:"type2"}, 
+            {name:"Казань", value:"type3"}, 
+            {name:"Сочи", value:"type4"}  , 
+            {name:"Севастополь", value:"type5"}
           ]
+        },
+        { 
+          name: "address",  
+          type:"text", 
+          placeholder: "Адрес: улица, дом, корпус, строение", 
+          length: "col-6" 
         },
       ],
     },
@@ -254,10 +275,10 @@ export default function(){
       label:"Тип компании",
       labelSecond:"выберете тип", 
       options: [
-        {label:"ООО", value:"ooo"}, 
-        {label:"ЗАО", value:"zao"} ,
-        {label:"ИП", value:"ip"}
+        {name:"ООО", value:"ooo"}, 
+        {name:"ЗАО", value:"zao"} ,
+        {name:"ИП", value:"ip"}
       ]
-    }
+    },
   }
 }

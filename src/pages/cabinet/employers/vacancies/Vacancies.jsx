@@ -154,7 +154,7 @@ const Vacancies = (props) => {
 
 
   const contentPage = () => {
-    { console.log('listings', props); }
+
     return (
       <>
         {!loading && listings.length > 0 && (
@@ -170,7 +170,7 @@ const Vacancies = (props) => {
                   name={listing.vacancies_name}
                   solary={[listing.salary_priceFrom, listing.salary_priceTo]}
                   nameCompany={props.getInfoAccount.name_company}
-                  imgCompany={props.getInfoAccount.imgsCompany}
+                  imgCompany={props.getInfoAccount.imgCompany}
                   phoneCompany={props.getInfoAccount.phones_main}
                   mailCompany={props.getInfoAccount.email}
                 />
@@ -190,7 +190,7 @@ const Vacancies = (props) => {
   }
   const rightSibar = () => {
     return (
-      <Link className="btn btn--orange" to="/new_element">
+      <Link className="btn btn--orange" to="/cabinet/vacancies-new">
         Создать вакансию
       </Link>
     )

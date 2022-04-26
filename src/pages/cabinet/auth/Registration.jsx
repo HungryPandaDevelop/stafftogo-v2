@@ -7,7 +7,7 @@ import { registrationAccount } from 'actions';
 const Registration = (props) => {
 
   const onSubmitIn = () => {
-
+    // console.log('onSubmitIn', props.formData)
     props.registrationAccount(props.formData);
   }
 

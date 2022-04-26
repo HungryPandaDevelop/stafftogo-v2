@@ -4,7 +4,7 @@ import {
   uploadBytesResumable,
   getDownloadURL
 } from 'firebase/storage';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { v4 as uuidv4 } from 'uuid';
 
 const auth = getAuth();
