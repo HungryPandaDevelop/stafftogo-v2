@@ -15,6 +15,20 @@ import ForgotPassword from 'pages/cabinet/auth/ForgotPassword';
 import Registration from 'pages/cabinet/auth/Registration';
 
 
+// import NewElement from 'pages/cabinet/account/NewElement';
+// import EditElement from 'pages/cabinet/account/EditElement';
+
+// Страницы кабинет
+// import Account from 'pages/cabinet/profile/Account';
+
+// import Responses from 'pages/cabinet/Responses';
+// import Candidates from 'pages/cabinet/Candidates';
+// import Vacancies from 'pages/cabinet/vacancies/Vacancies';
+// import Packserv from 'pages/cabinet/Packserv';
+// import OrderHistory from 'pages/cabinet/OrderHistory';
+// import Score from 'pages/cabinet/Score';
+// Страницы кабинет
+
 // Страницы кабинет Нанимателя
 import AccountEmployers from 'pages/cabinet/employers/Account';
 import Vacancies from 'pages/cabinet/employers/vacancies/Vacancies';
@@ -27,7 +41,8 @@ import Catalog from 'pages/Catalog';
 import List from 'pages/List';
 import Detail from 'pages/Detail';
 
-import Temp from 'pages/Temp';
+// import TempForm from 'pages/cabinet/temporary/TestForm';
+// import EditForm from 'pages/cabinet/temporary/EditForm';
 
 const App = () => {
   return (
@@ -40,7 +55,17 @@ const App = () => {
           <Route path='/forgot-password' element={<ForgotPassword/>}></Route>
           <Route path='/registration'  element={<Registration/>} ></Route>
 
-        
+          
+          {/* <Route path='/cabinet' element={<PrivateRoute/>}>
+            <Route path='/cabinet' element={<AccountEmployers/>}></Route>
+            <Route path='/cabinet/requisites' element={<Requisites/>}></Route>
+            <Route path='/cabinet/responses' element={<Responses/>}></Route>
+            <Route path='/cabinet/candidates' element={<Candidates/>}></Route>
+            <Route path='/cabinet/vacancies' element={<Vacancies/>}></Route>
+            <Route path='/cabinet/packserv' element={<Packserv/>}></Route>
+            <Route path='/cabinet/order_history' element={<OrderHistory/>}></Route>
+            <Route path='/cabinet/score' element={<Score/>}></Route>
+          </Route> */}
 
           {/*  Страницы кабинет Нанимателя */}
             <Route path='/cabinet' element={<PrivateRoute/>}>
@@ -52,13 +77,16 @@ const App = () => {
           {/*  Страницы кабинет Нанимателя */}
 
 
+          {/* <Route path='/new_element/' element={<NewElement/>}></Route>
+          <Route path='/edit_element/:elementId' element={<EditElement/>}></Route> */}
+        
 
           <Route path='/catalog' element={<Catalog/>}></Route>
           <Route path='/catalog/:catagoryName' element={<List/>}></Route>
           <Route path='/catalog/:catagoryName/:elementId' element={<Detail/>}></Route>
 
-          <Route path='/temp' element={<Temp/>}></Route>
-
+          {/* <Route path='/temp-form/' element={<TempForm/>}></Route>
+          <Route path='/edit-form/' element={<EditForm/>}></Route> */}
 
         </Routes>
         <Footer/>
