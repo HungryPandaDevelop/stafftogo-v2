@@ -27,75 +27,75 @@ import { toast } from 'react-toastify';
 
 
 // регистрация
-export const registrationAccount = (formData) => 
-  async()=>{
+// export const registrationAccount = (formData) => 
+//   async()=>{
     
 
-    const { name, email, password } = formData;
+//     const { name, email, password } = formData;
 
-    try {
-      /* add to base auth */
-    
-      
-      const auth = getAuth();
-  
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  
-      updateProfile(auth.currentUser, {
-        displayName: name
-      });
-      /* add to base auth */
-  
-      /* add to firestore base */
-      const user = userCredential.user;
-
-      const formDataCopy = { ...formData };
-
-      delete formDataCopy.password;
-
-      formDataCopy.timestamp = serverTimestamp();
-
-      await setDoc(doc(db, 'users', user.uid), formDataCopy);
-      /* add to firestore base */
-      //window.location = '/cabinet/';
-      //
-      toast.success('Rегистрация успешна');
+//     try {
+//       /* add to base auth */
     
       
+//       const auth = getAuth();
   
-    } catch (error) {
-      console.log(error)
-      toast.error('Ошибка регистрации');
-    }
-  }
+//       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  
+//       updateProfile(auth.currentUser, {
+//         displayName: name
+//       });
+//       /* add to base auth */
+  
+//       /* add to firestore base */
+//       const user = userCredential.user;
+
+//       const formDataCopy = { ...formData };
+
+//       delete formDataCopy.password;
+
+//       formDataCopy.timestamp = serverTimestamp();
+
+//       await setDoc(doc(db, 'users', user.uid), formDataCopy);
+//       /* add to firestore base */
+//       //window.location = '/cabinet/';
+//       //
+//       toast.success('Rегистрация успешна');
+    
+      
+  
+//     } catch (error) {
+//       console.log(error)
+//       toast.error('Ошибка регистрации');
+//     }
+//   }
 
 
 // регистрация
 
 // авторизация
 
-export const authAccount = (formData) => 
-  async()=>{
+// export const authAccount = (formData) => 
+//   async()=>{
 
-    const { email, password } = formData;
+//     const { email, password } = formData;
 
-    try {
+//     try {
 
-      const auth = getAuth();
+//       const auth = getAuth();
 
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+//       const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-      if (userCredential.user) {
-        toast.success('Авторизации успешна')
-        window.location = '/cabinet/';
-      }
+//       if (userCredential.user) {
+//         toast.success('Авторизации успешна')
+//         window.location = '/cabinet/';
+//       }
 
 
-    } catch (error) {
-      toast.error('Ошибка авторизации')
-    }
+//     } catch (error) {
+//       toast.error('Ошибка авторизации')
+//     }
 
-  }
+//   }
 
 // авторизация
 
@@ -135,29 +135,29 @@ export const getInfoAccountAction = () =>
 // получить информацию об аккаунте
 
 // сохранить информацию об аккаунте
-export const saveInfoAccountAction = (dataForm) => 
-  async (dispatch) => {
+// export const saveInfoAccountAction = (dataForm) => 
+//   async (dispatch) => {
   
-    const auth = getAuth();
+//     const auth = getAuth();
 
   
-    try {
+//     try {
 
-      await updateProfile(auth.currentUser, {
-        displayName: dataForm.name
-      });
+//       await updateProfile(auth.currentUser, {
+//         displayName: dataForm.name
+//       });
 
-      const userRef = doc(db, 'users', auth.currentUser.uid);
+//       const userRef = doc(db, 'users', auth.currentUser.uid);
 
 
-      await updateDoc(userRef, dataForm);
+//       await updateDoc(userRef, dataForm);
 
-      toast.success('Данные обновлены')
-    } catch (error) {
-      toast.error('Невозможно обновить профиль')
-      console.log(error)
-    }
-  }
+//       toast.success('Данные обновлены')
+//     } catch (error) {
+//       toast.error('Невозможно обновить профиль')
+//       console.log(error)
+//     }
+//   }
 // сохранить информацию об аккаунте
 
 // создать вакансию

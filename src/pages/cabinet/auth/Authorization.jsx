@@ -2,19 +2,18 @@ import RenderFormAccount from 'components/cabinet/forms/RenderFormAccount';
 
 import { connect } from 'react-redux';
 
-import { authAccount } from 'actions';
-
+// import { authAccount } from 'actions';
 
 import { Link } from 'react-router-dom';
 
-import { toast } from 'react-toastify';
-
 import OAuth from 'components/cabinet/OAuth';
+
+import { authAccount } from 'store/actions/authAccount';
 
 const Authorization = (props) => {
 
   const onSubmitIn = () => {
-    props.authAccount(props.formData);
+    authAccount(props.formData);
   }
 
   return (
@@ -25,8 +24,8 @@ const Authorization = (props) => {
             <h1>Авторизация</h1>
             <RenderFormAccount
               btnSaveText="Авторизация"
-              objFields={props.fieldAuthorization}
-              orderFields={props.fieldAuthorization.order}
+              objFields={props.fieldsAuthorization}
+              orderFields={props.fieldsAuthorization.order}
               onSubmitProps={onSubmitIn}
             />
             <Link to="/forgot-password">Восстановить пароль</Link>
@@ -47,7 +46,7 @@ const mapStateToProps = (state) => {
   // console.log(formReducer)
 
   return {
-    fieldAuthorization: state.fieldAuthorization, // база полей
+    fieldsAuthorization: state.fieldsAuthorization, // база полей
     formData: formReducer,
   }
 }

@@ -1,32 +1,43 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { connect } from 'react-redux';
 
 import TemplateAccount from 'components/template/TemplateAccount';
 import RenderFormAccount from 'components/cabinet/forms/RenderFormAccount';
 
-import {
-  getInfoAccountAction,
-  saveInfoAccountAction
-} from 'actions'
+import { getUserInfo } from 'store/asyncActions/getUserInfo';
+import { setUserInfo } from 'store/asyncActions/setUserInfo';
 
-import fetchAccount from './getInfoAccountAction';
+import actionCreator from 'store/actions';
+
+// import {
+//   getInfoAccountAction,
+//   saveInfoAccountAction
+// } from 'actions'
+
+// import fetchAccount from './getInfoAccountAction';
 
 const Account = (props) => {
 
   /* получение данных пользователя */
 
   useEffect(() => {
-    props.getInfoAccountAction();
+
+    getUserInfo().then(res => {
+      props.actionCreator('SET_INFO_ACCOUNT', res.data);
+    });
+
   }, []);
 
   /* получение данных пользователя */
 
   /* сохранение данных пользователя */
   const onSubmitIn = () => {
-    // console.log('save in account ', props.dataForm.values)
-    props.saveInfoAccountAction(props.dataForm.values);
+    //console.log('save in account ', props.dataForm.values)
+
+    setUserInfo(props.dataForm.values);
   }
+
 
   /* сохранение данных пользователя */
 
@@ -34,13 +45,12 @@ const Account = (props) => {
 
   return (
     <>
-
       <TemplateAccount title="Учетная запись компании" >
         <RenderFormAccount
           btnSaveText="Сохранить изменения"
-          objFields={props.fieldCompanyAccount}
-          orderFields={props.fieldCompanyAccount.order}
-          initialValues={props.getInfoAccount ? props.getInfoAccount : null}
+          objFields={props.fieldsEmployersAccount}
+          orderFields={props.fieldsEmployersAccount.order}
+          initialValues={props.accountInfo ? props.accountInfo : null}
           onSubmitProps={onSubmitIn}
         />
       </TemplateAccount>
@@ -53,14 +63,16 @@ const mapStateToProps = (state) => {
   const formReducer = state.form && state.form.singleInput;
 
   return {
-    fieldCompanyAccount: state.fieldCompanyAccount, // база полей
-    getInfoAccount: state.getInfoAccountReducer.getInfoAccount, // полученные данные с сервера
+    fieldsEmployersAccount: state.fieldsEmployersAccount, // база полей
+    accountInfo: state.accountInfo.accountInfo,
     dataForm: formReducer,
+    // getInfoAccount: state.getInfoAccountReducer.getInfoAccount, // полученные данные с сервера
+
+    // 
   }
 }
 
 export default connect(mapStateToProps,
   {
-    getInfoAccountAction,
-    saveInfoAccountAction
+    actionCreator
   })(Account);

@@ -2,13 +2,14 @@ import RenderFormAccount from 'components/cabinet/forms/RenderFormAccount';
 
 import { connect } from 'react-redux';
 
-import { registrationAccount } from 'actions';
+import { registrationAccount } from 'store/actions/registrationAccount';
+// import { registrationAccount } from 'actions';
 
 const Registration = (props) => {
 
   const onSubmitIn = () => {
     // console.log('onSubmitIn', props.formData)
-    props.registrationAccount(props.formData);
+    registrationAccount(props.formData);
   }
 
   return (
@@ -20,8 +21,8 @@ const Registration = (props) => {
           <h1>Регистрация</h1>
           <RenderFormAccount
             btnSaveText="Регистрация"
-            objFields={props.fieldRegistration}
-            orderFields={props.fieldRegistration.order}
+            objFields={props.fieldsRegistration}
+            orderFields={props.fieldsRegistration.order}
             onSubmitProps={onSubmitIn}
           />
         </div>
@@ -34,12 +35,12 @@ const Registration = (props) => {
 const mapStateToProps = (state) => {
   const formReducer = state.form.singleInput && state.form.singleInput.values;
 
-  // console.log(formReducer)
+  console.log(state)
 
   return {
-    fieldRegistration: state.fieldRegistration, // база полей
+    fieldsRegistration: state.fieldsRegistration, // база полей
     formData: formReducer,
   }
 }
 
-export default connect(mapStateToProps, { registrationAccount })(Registration);
+export default connect(mapStateToProps)(Registration);

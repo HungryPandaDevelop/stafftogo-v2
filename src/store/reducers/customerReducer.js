@@ -7,7 +7,7 @@ const ADD_CUSTOMER = "ADD_CUSTOMER";
 const REMOVE_CUSTOMER = "REMOVE_CUSTOMER";
 
 const  customerReducer = (state = defaultState, action) => {
-  console.log(action)
+
   switch(action.type){
     case LOAD_CUSTOMER:
       return {...state, customers: [...state.customers, ...action.payload]}

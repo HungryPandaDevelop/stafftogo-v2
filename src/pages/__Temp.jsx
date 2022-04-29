@@ -9,6 +9,10 @@ import { removeCustomerActionIn } from 'store/actions/removeCustomer';
 
 import { fetchCustomers } from 'store/asyncActions/customers';
 
+
+
+import actionCreator from 'store/actions';
+
 const Temp = (props) => {
 
   // -------------------------------------------------------
@@ -40,8 +44,8 @@ const Temp = (props) => {
       <h2>
         {props.props.cash.cash}
       </h2>
-      <button onClick={() => { props.addCashActionIn(5) }}>+</button>
-      <button onClick={() => { props.removeCashActionIn(5) }}>-</button>
+      <button onClick={() => { props.actionCreator('ADD_CASH', 5) }}>+</button>
+      <button onClick={() => { props.actionCreator('REMOVE_CASH', 5) }}>-</button>
 
       <hr />
       {
@@ -77,7 +81,7 @@ export default connect(mapStateToProps,
     removeCashActionIn,
     addCustomerActionIn,
     removeCustomerActionIn,
-    fetchCustomers
-
+    fetchCustomers,
+    actionCreator,
   }
 )(Temp)

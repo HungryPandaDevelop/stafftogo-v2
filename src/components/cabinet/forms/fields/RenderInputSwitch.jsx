@@ -46,24 +46,24 @@ const TemplateFieldSwitch = (props) => {
           ref={elRefL}
           checked={!switchStatus}
           {...input}
-          value={options[0].value}
+          value={options && options[0].value}
         />
         <input
           type="radio"
           ref={elRefR}
           checked={switchStatus}
           {...input}
-          value={options[1].value}
+          value={options && options[1].value}
         />
 
-        <span>{options[0].name}</span>
+        <span>{options && options[0].name}</span>
         <div
           className={`switch-btn switch-btn--orange ${switchStatus ? 'switch-btn--active' : ''}`}
           onClick={switchChange}
         >
           <i></i>
         </div>
-        <span>{options[1].name}</span>
+        <span>{options && options[1].name}</span>
       </div>
 
     </>

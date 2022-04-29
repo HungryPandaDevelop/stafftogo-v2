@@ -27,7 +27,6 @@ import Catalog from 'pages/Catalog';
 import List from 'pages/List';
 import Detail from 'pages/Detail';
 
-import Temp from 'pages/Temp';
 
 const App = () => {
   return (
@@ -56,8 +55,6 @@ const App = () => {
           <Route path='/catalog' element={<Catalog/>}></Route>
           <Route path='/catalog/:catagoryName' element={<List/>}></Route>
           <Route path='/catalog/:catagoryName/:elementId' element={<Detail/>}></Route>
-
-          <Route path='/temp' element={<Temp/>}></Route>
 
 
         </Routes>
